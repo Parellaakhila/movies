@@ -50,6 +50,7 @@ async function display(data, endpoint) {
                     </div>
                     <p>${genre}</p>
                     <p><strong>Released on : </strong>${item.release_date}</p>
+                    <p><strong>vote:</strong>${item.vote_average}</p>
                     <p class = "rating"><strong>Rating : </strong>${item.vote_average.toFixed(1)}/10(${item.vote_count})</p>
                     <div class="d-flex justify-content-between">
                         <a href=https://www.themoviedb.org/movie/${item.id} class="btn btn-primary">Know More</a>
@@ -159,13 +160,13 @@ document.getElementById("searchForm").addEventListener("submit", async (e) => {
         console.log('error', error)
     }
 
-    // fetch(url, options)
-    // .then(res => res.json())
-    // .then(json => {
-    //     display(json.results, `${movieName} | Search results`)
-    //     console.log(json)
-    // })
-    // .catch(err => console.error('error:' + err));
+    fetch(url, options)
+    .then(res => res.json())
+    .then(json => {
+        display(json.results, `${movieName} | Search results`)
+        console.log(json)
+    })
+    .catch(err => console.error('error:' + err));
 })
 
 
